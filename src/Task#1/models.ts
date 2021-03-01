@@ -52,7 +52,7 @@ class Project implements IProject {
     this.tasks.push(task);
   };
   editTask = (task: Partial<ITask>): void => {
-    task.completed = !task.completed;
+    this.tasks = this.tasks.map(el => (el.id === task.id ? { ...el, ...task } : el));
   };
   deleteTask = (id: number): void => {
     this.tasks = this.tasks.filter(task => id !== task.id);
@@ -93,12 +93,16 @@ myFirstProject.addTask(addDelete);
 todoApp.addProject(myFirstProject);
 
 console.log(myFirstProject.tasks);
-console.log('total time', myFirstProject.getTotalTime());
-console.log('before del', myFirstProject.tasks);
-console.log('tasks', myFirstProject.deleteTask(2));
-console.log('after del', myFirstProject.tasks);
-console.log('before edit', myFirstProject.editTask(addDelete));
+myFirstProject.editTask({ id: 1, durationInMin: 100 });
 console.log(myFirstProject.tasks);
-console.log('after edit', myFirstProject.tasks);
-console.log('all tasks by vasya', myFirstProject.getAllTasksByDeveloper(vasya.id));
-console.log('info about this task', addDelete.getInfo());
+
+// console.log(myFirstProject.tasks);
+// console.log('total time', myFirstProject.getTotalTime());
+// console.log('before del', myFirstProject.tasks);
+// console.log('tasks', myFirstProject.deleteTask(2));
+// console.log('after del', myFirstProject.tasks);
+// console.log('before edit', myFirstProject.editTask(addDelete));
+// console.log(myFirstProject.tasks);
+// console.log('after edit', myFirstProject.tasks);
+// console.log('all tasks by vasya', myFirstProject.getAllTasksByDeveloper(vasya.id));
+// console.log('info about this task', addDelete.getInfo());
