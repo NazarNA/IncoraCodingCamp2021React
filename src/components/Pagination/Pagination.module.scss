@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .paginationWrapper {
+    display: flex;
+    flex-direction: column;
+
+    .pageView {
+      font-size: 90px;
+      color: white;
+      background-color: darkred;
+      text-align: center;
+      padding: 70px 0;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      border: solid rosybrown 1px;
+      font-weight: bolder;
+      cursor: pointer;
+      outline: none;
+      &.active {
+        background-color: darkred;
+        color: white;
+      }
+    }
+  }
+}
