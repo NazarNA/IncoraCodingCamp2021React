@@ -10,99 +10,43 @@ $font-color: #4d5050;
   color: $font-color;
 }
 
-.wrapper {
-  margin: 0 auto;
-  overflow: hidden;
+.productsWrapper {
   display: flex;
-  justify-content: space-between;
-  aside {
-    flex-grow: 1;
-    width: 60%;
-    img {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .addBtn {
+    padding: 7px;
+    width: 100%;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+
+  .productItem,
+  .paginationWrapper {
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+
+    .paginationItem {
+      outline: none;
+      transition-duration: 0.3s;
+      &:hover {
+        background-color: pink;
+      }
+    }
+
+    .productCell,
+    button {
       width: 100%;
-      object-fit: cover;
-      object-position: center;
-      height: 100vh;
-    }
-  }
-  main {
-    // border: olive solid 3px;
-    max-width: 405px;
-    width: 40%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 2;
-    padding: 50px 0;
-    section {
-      // border: orangered solid 3px;
-      padding: 50px 10%;
-      h1 {
-        font-weight: bolder;
-      }
-      p {
-        font-weight: bold;
-        a {
-          color: $main-color;
-        }
-      }
-    }
-    form {
-      // border: orangered solid 3px;
-      display: flex;
-      flex-direction: column;
-      padding: 10px 10%;
-      input {
-        margin: 5px 0;
-        padding: 15px 5px;
-        border: 1px solid grey;
-        border-radius: 5px;
-        outline: none;
-      }
-      a {
-        font-size: 12px;
-        align-self: flex-end;
-      }
-      label {
-        font-weight: bold;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-      }
-      .form_submit {
-        margin: 70px 0;
-        padding: 9px 5px;
-        background-color: $main-color;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 1080px) {
-  .wrapper {
-    aside {
-      img {
-        height: 80%;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 952px) {
-  .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aside {
-      display: none;
-    }
-    main {
-      max-width: 400px;
+      text-align: center;
+      font-size: 13px;
+      padding: 12px;
+      border: brown solid 1px;
+      border-radius: 5px;
+      margin: 2px;
+      cursor: pointer;
     }
   }
 }
