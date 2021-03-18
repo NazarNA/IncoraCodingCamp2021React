@@ -17,7 +17,7 @@ const useProducts = ({ perPage }: IProducts) => {
 
   const total = useMemo(() => Math.ceil(productsList.length / perPage), [perPage, productsList]);
 
-  let products = useMemo(() => {
+  const products = useMemo(() => {
     const indexOfLast = page * perPage;
     const indexOfFirst = indexOfLast - perPage;
     return productsList.slice(indexOfFirst, indexOfLast);
@@ -57,7 +57,7 @@ const useProducts = ({ perPage }: IProducts) => {
         ? setProductsList(
             productsList.filter((product: IProduct) => product.name.includes(filterOptions.name!))
           )
-        : setProductsList(productsArray);
+        : setProductsList(productsList);
 
       if (filterOptions.priceMore) {
         setProductsList(productsList.filter((item: IProduct) => item.price >= filterOptions.priceMore!));

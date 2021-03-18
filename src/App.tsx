@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useProducts from './hooks/useProducts';
 import './App.scss';
 import ProductItem from './components/ProductItem';
+import TestPage from './components/TestPage';
 
 function App() {
   const [name, setName] = useState<string>('');
@@ -62,6 +63,7 @@ function App() {
           </button>
         ))}
       </div>
+      <TestPage />
     </div>
   );
 }
