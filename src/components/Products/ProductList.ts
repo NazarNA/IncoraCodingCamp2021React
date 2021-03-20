@@ -3,8 +3,7 @@ export interface IProduct {
   name: string;
   price: number;
 }
-
-export const productsArray: IProduct[] = [
+export const products: IProduct[] = [
   {
     id: 1,
     name: 'apple',
