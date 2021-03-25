@@ -1,0 +1,92 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formikForm {
+  border: grey solid 2px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+}
+
+.formikForm input {
+  margin: 0 0 5px 0;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.formikForm button {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.formikForm div {
+  position: relative;
+  margin: 5px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+hr {
+  margin: 10px 0;
+}
+
+.formikForm .twoBlocksSection,
+.formikForm .threeBlocksSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.formikForm .twoBlocksSection div {
+  width: 49%;
+}
+
+.formikForm .threeBlocksSection div {
+  width: 30%;
+}
+
+.formikForm .threeBlocksSection div select {
+  display: inline-block;
+  align-items: center;
+  margin-bottom: 4px;
+  padding: 10px;
+}
+
+.formikForm .checkboxWrapper label {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  cursor: pointer;
+}
+
+.formikForm .checkboxWrapper div input {
+  margin: 0 3px 0 0;
+}
+
+.formikForm .radioWrapper label {
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
+}
+
+.formikForm .radioWrapper input {
+  margin: 0 3px 0 0;
+}
+
+.formikForm .radioWrapper {
+  display: flex;
+  flex-direction: column;
+}
