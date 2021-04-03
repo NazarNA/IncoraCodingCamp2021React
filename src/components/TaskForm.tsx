@@ -9,8 +9,34 @@ import { FormikCheckbox } from './shared/FormikAdapters/FormikCheckbox';
 import { FormikRadio } from './shared/FormikAdapters/FormikRadio';
 
 import '../App.css';
+import { loginUsers, registerUser } from '../api/auth';
 
 export const TaskForm: React.FC = () => {
+  const createUser = () => {
+    registerUser({
+      firstName: 'Nazar',
+      lastName: 'Novosad',
+      password: '123456789',
+      email: 'nazarnovosad@gmail.com'
+    });
+  };
+
+  const login = async () => {
+    try {
+      const res = await loginUsers({
+        password: '123456789',
+        email: 'nazarnovosad@gmail.com'
+      });
+
+      const { access_token, refresh_token } = res.data;
+      localStorage.setItem('token', access_token);
+      localStorage.setItem('refresh_token', refresh_token);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const initialValue: initialValueI = {
     firstName: '',
     lastName: '',
@@ -73,6 +99,8 @@ export const TaskForm: React.FC = () => {
           </Form>
         )}
       </Formik>
+      <button onClick={createUser}>Register</button>
+      <button onClick={login}>Login</button>
     </div>
   );
 };
