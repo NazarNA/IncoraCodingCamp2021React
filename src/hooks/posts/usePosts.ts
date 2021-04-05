@@ -19,7 +19,7 @@ export const usePosts = () => {
   };
 
   const redactPost = async (post: IPost) => {
-    const res = await postPosts(post);
+    const res = await editPosts(post);
     const cached: any = cache.get('/posts');
 
     console.log('cached', cached);
