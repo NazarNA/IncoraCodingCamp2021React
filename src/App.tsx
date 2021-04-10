@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
   return (
     <div className='container'>
-      {!loading && (
+      {weather.list && (
         <>
           <Formik
             initialValues={{ city: '' }}
