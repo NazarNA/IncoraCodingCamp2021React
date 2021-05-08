@@ -53,7 +53,7 @@ const App = () => {
                     onChange={(e: any) => setCity(e.target.value)}
                   />
 
-                  <button className='btn btn-dark'>Погода</button>
+                  <button className='btn btn-dark'>Weather</button>
                 </div>
               </Form>
             </Formik>
