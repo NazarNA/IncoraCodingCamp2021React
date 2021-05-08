@@ -7,8 +7,6 @@ const initialState = {
 };
 
 export const weatherReducer = (state = initialState, action: any) => {
-  console.log(action);
-
   switch (action.type) {
     case WeatherTypes.REQUEST_WEATHER_BEGGIN:
       return { ...state, loading: true };

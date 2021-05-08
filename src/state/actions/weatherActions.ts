@@ -10,6 +10,8 @@ export const getWeatherAction = (city: string = 'lviv') => async (dispatch: Disp
   try {
     const res = await getWeather(city);
 
+    console.log(res);
+
     dispatch({
       type: WeatherTypes.REQUEST_WEATHER_SUCCESS,
       payload: res.data

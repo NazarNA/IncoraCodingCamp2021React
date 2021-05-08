@@ -10,3 +10,10 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.loader {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
