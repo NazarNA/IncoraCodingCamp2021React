@@ -4,7 +4,6 @@ import { getWeatherAction } from './state/actions/weatherActions';
 import WeatherOnDay from './components/WeatherOnDay/WeatherOnDay';
 import { Form, Formik, Field } from 'formik';
 import Loader from 'react-loader-spinner';
-import { weatherState } from './state/store';
 import { PageTypes } from './state/actions/weatherTypes';
 
 import './App.scss';
@@ -26,7 +25,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getWeatherAction());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='container-fluid px-3 pb-4 pt-2'>
@@ -61,10 +60,10 @@ const App = () => {
             <table className='table table-dark'>
               <thead className='thead-dark'>
                 <tr>
-                  <td scope='col'>
+                  <th scope='col'>
                     {weather.city?.name}&nbsp;{weather.city?.country}&nbsp; <br />
                     {perDay[page]} <br />
-                  </td>
+                  </th>
                   <th scope='col'>Temperature</th>
                   <th scope='col'>Humidity</th>
                   <th scope='col'>Pressure</th>
