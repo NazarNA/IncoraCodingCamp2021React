@@ -17,3 +17,11 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+.error {
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  bottom: -17px;
+  left: 5px;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWeatherAction } from './state/actions/weatherActions';
 import WeatherOnDay from './components/WeatherOnDay/WeatherOnDay';
@@ -8,23 +8,29 @@ import { PageTypes } from './state/actions/weatherTypes';
 
 import './App.scss';
 import { getLoading, getPage, getState } from './state/selectors/weatherSelectors';
+import { weatherSchema } from './utils/validetionSchema';
 
 const App = () => {
   const dispatch = useDispatch();
   const weather: any = useSelector(getState);
   const loading: boolean = useSelector(getLoading);
   const page: number = useSelector(getPage);
-
-  console.log(weather);
+  const errorMessage: string = useSelector((state: any) => state.error);
 
   const perDay = Array.from(
     new Set(weather.list?.length && weather.list.map((el: any) => el.dt_txt.split(' ')[0]))
   );
 
-  const [city, setCity] = useState<string>('Lviv');
+  interface ICity {
+    city: string;
+  }
+
+  const initialCity: ICity = {
+    city: ''
+  };
 
   useEffect(() => {
-    dispatch(getWeatherAction());
+    dispatch(getWeatherAction('Lviv'));
   }, [dispatch]);
 
   return (
@@ -37,25 +43,26 @@ const App = () => {
         weather.list && (
           <>
             <Formik
-              initialValues={{ city: '' }}
-              onSubmit={() => {
-                dispatch(getWeatherAction(city));
-                setCity('');
+              initialValues={initialCity}
+              validationSchema={weatherSchema}
+              onSubmit={values => {
+                dispatch(getWeatherAction(values.city));
               }}
             >
-              <Form>
-                <div className='input-group mb-3'>
-                  <Field
-                    name='search'
-                    className='form-control'
-                    placeholder='Enter Your city'
-                    value={city}
-                    onChange={(e: any) => setCity(e.target.value)}
-                  />
-
-                  <button className='btn btn-dark'>Weather</button>
-                </div>
-              </Form>
+              {({ errors, touched }) => (
+                <Form>
+                  <div className='input-group mb-3'>
+                    <Field name='city' className='form-control' placeholder='Enter Your city' />
+                    {errors.city && touched.city ? <div className='error'>{errors.city}</div> : null}
+                    {errorMessage && !touched.city ? (
+                      <div className='error'>Please enter a correct city name!</div>
+                    ) : null}
+                    <button type='submit' className='btn btn-dark'>
+                      Weather
+                    </button>
+                  </div>
+                </Form>
+              )}
             </Formik>
             <table className='table table-dark'>
               <thead className='thead-dark'>
@@ -83,6 +90,7 @@ const App = () => {
             <div className='d-grid gap-2 d-md-flex justify-content-md-end'>
               {' '}
               <button
+                type='button'
                 className='btn btn-secondary btn-sm me-md-2'
                 onClick={() => dispatch({ type: PageTypes.PREV_PAGE })}
                 disabled={page === 0 ? true : false}
@@ -90,6 +98,7 @@ const App = () => {
                 prev
               </button>
               <button
+                type='button'
                 className='btn btn-secondary btn-sm'
                 onClick={() => dispatch({ type: PageTypes.NEXT_PAGE })}
                 disabled={page === perDay.length - 1 ? true : false}

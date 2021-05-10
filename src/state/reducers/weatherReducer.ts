@@ -3,7 +3,8 @@ import { WeatherTypes, PageTypes } from './../actions/weatherTypes';
 const initialState = {
   loading: false,
   weather: {},
-  page: 0
+  page: 0,
+  error: ''
 };
 
 export const weatherReducer = (state = initialState, action: any) => {
@@ -20,7 +21,7 @@ export const weatherReducer = (state = initialState, action: any) => {
       return {
         ...state,
         loading: false,
-        weather: action.payload
+        error: action.payload
       };
     case PageTypes.NEXT_PAGE:
       return {
